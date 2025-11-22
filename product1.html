@@ -449,12 +449,17 @@ document.addEventListener("DOMContentLoaded", function() {
       }
     });
 
-    document.querySelectorAll(".lang-btn").forEach(button => {
-      button.addEventListener("click", () => {
-        const lang = button.dataset.lang;
-        if (lang === "ro") window.location.href = "product2.html";
-      });
-    });
+   document.querySelectorAll('.lang-btn').forEach(button => {
+  button.addEventListener('click', () => {
+    const lang = button.dataset.lang;
+    const urlParams = new URLSearchParams(window.location.search);
+    const productId = urlParams.get('id') || '1';
+    
+    if (lang === 'ro') {
+      window.location.href = `product2.html?id=${productId}`;
+    }
+  });
+});
 
     // ИЗМЕНЕНИЕ: Добавлен скрипт живого поиска
     document.addEventListener('DOMContentLoaded', function() {

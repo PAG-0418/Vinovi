@@ -459,11 +459,16 @@
     });
 
     document.querySelectorAll('.lang-btn').forEach(button => {
-      button.addEventListener('click', () => {
-        const lang = button.dataset.lang;
-        if (lang === 'ru') window.location.href = 'product1.html';
-      });
-    });
+  button.addEventListener('click', () => {
+    const lang = button.dataset.lang;
+    const urlParams = new URLSearchParams(window.location.search);
+    const productId = urlParams.get('id') || '1';
+    
+    if (lang === 'ru') {
+      window.location.href = `product1.html?id=${productId}`;
+    }
+  });
+});
 
     // ИЗМЕНЕНИЕ: Добавлен скрипт живого поиска для румынской версии
     document.addEventListener('DOMContentLoaded', function() {
